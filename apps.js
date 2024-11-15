@@ -36,6 +36,28 @@ apps.get("/contacts", (req, res )=> {
 });
 
 
+// methode de route avec post; put; et delete .
+
+
+// j'ai configurer une route qui répond aux requetes POST  
+apps.post("/services", (req, res )=> {
+    res.end(" welcom to service  !!");
+});
+
+apps.put("/services", (req, res )=> {
+    res.end(" welcom to service  !!");
+});
+
+apps.delete("/services", (req, res )=> {
+    res.end(" welcom to service  !!");
+});
+
+
+
+
+
+
+
 // partager l'objet 'apps' avec d'autre fichiers
 module.exports = apps;
 
