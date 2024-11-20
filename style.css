@@ -1,48 +1,60 @@
+/* Style général du corps de la page */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif; /* Définit la police de caractères */
+    background-color: #f4f4f4; /* Couleur de fond de la page */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime le remplissage par défaut */
 }
 
+/* Styles pour l'en-tête de la page */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
+    background-color: #333; /* Couleur de fond de l'en-tête */
+    color: #fff; /* Couleur du texte dans l'en-tête */
+    padding: 10px 20px; /* Remplissage autour du contenu de l'en-tête */
+    text-align: center; /* Centre le texte dans l'en-tête */
 }
 
+/* Styles pour le titre principal */
 h1 {
-    font-size: 2.5em;
-    margin: 0;
+    font-size: 2.5em; /* Taille de la police pour le titre */
+    margin: 0; /* Supprime les marges autour du titre */
 }
 
+/* Styles pour le menu de navigation */
 nav {
-    margin: 20px 0;
+    margin: 20px 0; /* Marge au-dessus et en dessous du menu de navigation */
 }
 
+img {
+    
+    width: 10%; /*definit la largeur */
+    height: 10%; /*definit la hauteur */
+    border-radius: 10px ; /* arrondir les coins*/
+}
+
+/* Styles pour les liens dans le menu de navigation */
 nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
+    color: #fff; /* Couleur des liens */
+    text-decoration: none; /* Supprime le soulignement des liens */
+    margin: 0 15px; /* Marge à gauche et à droite des liens */
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
 
+
+/* Conteneur principal pour le contenu */
 .container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+    max-width: 1200px; /* Largeur maximale du conteneur */
+    margin: auto; /* Centre le conteneur horizontalement */
+    padding: 20px; /* Remplissage à l'intérieur du conteneur */
 }
 
+/* Styles pour le pied de page */
 footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    background-color: #333; /* Couleur de fond du pied de page */
+    color: #fff; /* Couleur du texte dans le pied de page */
+    text-align: center; /* Centre le texte dans le pied de page */
+    padding: 10px 0; /* Remplissage autour du contenu du pied de page */
+    position: relative; /* Position relative pour le placement */
+    bottom: 0; /* Positionne le pied de page en bas */
+    width: 100%; /* Largeur complète du pied de page */
 }

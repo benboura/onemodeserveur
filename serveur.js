@@ -3,9 +3,11 @@
 // ici le package importé est http
 const http = require('http')
 
-const apps = require('./apps');
+//const apps = require('./apps');
+const exercice = require('./exercice')
 
-const numPort = 3002;
+//const numPort = 3002;
+const NumPort = 3004;
 
 // Crée un nouvel objet Date avec l'heure actuelle
 const currentDate = new Date; 
@@ -13,13 +15,18 @@ const currentDate = new Date;
 const Time = currentDate.toLocaleTimeString(); 
 
 
-apps.set("port",numPort);
+//apps.set("port",numPort);
 
-const server = http.createServer(apps);
+exercice.set("port",NumPort);
 
-server.listen(3002, () => {
+
+//const server = http.createServer(apps);
+const server = http.createServer(exercice);
+
+
+server.listen(3004, () => {
     console.log("Il est: ",Time );
-    console.log("le serveur est activé au port: ", numPort);
+    console.log("le serveur est activé au port: ", NumPort);
 });
 
 // declaration du serveur en utilisant http
