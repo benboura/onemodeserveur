@@ -14,24 +14,47 @@ exercice.get("/", (req, res )=> {
 
     // Récupère l'heure actuelle
     let date = new Date();
-    let salutation ="bonjour";
+    let salutation ="Bonjour";
 
 if(date.getHours() > 14 ) {
-    salutation ="bonsoir";
+    salutation ="Bonsoir";
 }
 
     utilisateur = {
-        nom:"Gazo",
-        prenom: "Moilim",
+        nom:["Gazo", "Mali", "LaMala"],
+        prenom: ["Moilim"],
         maSalutation: salutation
     };
    res.render("accueil"), utilisateur
     
 });
 
+// Definir une route GET pour l'URL "/menus" 
+exercice.get("/menus", (req, res )=> {
+
+    food = {
+        menus: ["Tripes", "Le special Waouh", "Songes au coco" ]
+    }
+
+// rendre la vue "menus" lorsque cette route est accédée avec le tableau food
+    res.render("menus"), food 
+});
+
+exercice.get("/contact", (req, res )=> {
+
+        res.render("contact");
+    
+});
+
+exercice.get("/equipe", (req, res )=> {
+
+    res.render("equipe");
+
+});
 
 
 
+/*
 
 // Définir une route pour la méthode GET sur la racine ("/")
 exercice.get("/equipe", (req, res) => {
@@ -82,6 +105,6 @@ exercice.get("/menus", (req, res )=> {
     })
     
 });
-
+*/
 
 module.exports = exercice;

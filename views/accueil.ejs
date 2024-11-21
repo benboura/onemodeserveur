@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Définir le jeu de caractères utilisé -->
+    <meta charset="UTF-8">
+    <!-- Assurer la compatibilité avec les appareils mobiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lien vers le fichier CSS pour les styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Titre de la page -->
+    <title>Restaurant</title>
+</head>
+<body>
+    <!-- En-tête de la page -->
+    <header>
+        <!-- Titre principal de la page -->
+        <h1>Caribu au Restau M'Bouzi food🔥🐐</h1>
+        <!-- Description ou slogan du restaurant -->
+        <p>Découvrez nos délicieux menus et passez votre commande dès aujourd'hui !</p>
+        <!-- Menu de navigation -->
+        <nav>
+            <ul>
+                <!-- Lien vers la page de l'équipe -->
+                <li><a href="equipe">Équipe</a></li>
+                <!-- Lien vers la page des menus -->
+                <li><a href="menus">Menus</a></li>
+                <!-- Lien vers la page de contact -->
+                <li><a href="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Section principale du contenu -->
+    <main>
+        <!-- Sous-titre pour les spécialités -->
+        <h2>Nos spécialités</h2>
+        <!-- Description des spécialités -->
+        <p>Nous offrons une variété de plats préparés avec des ingrédients frais et de qualité.
+            🚨Tous nos produits viennent directement de nos cultivateurs locaux, donc ayez confiance puisque c'est 200% HALAL !!!🚨 </p>
+       
+
+        <% utilisateur.nom.forEach(n => { %>
+            <h3> <%= utilisateur.maSalutation + " "+ n %> </h3>
+        <% }) %>
+        
+    </main>
+    <!-- Pied de page -->
+    <footer>
+        <!-- Note de copyright -->
+        <p>&copy; 2024 M'Bouzi food🔥🐐</p>
+    </footer>
+</body>
+</html>
