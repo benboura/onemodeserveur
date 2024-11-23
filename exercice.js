@@ -9,6 +9,8 @@ exercice.set("views", "./views");
 // preciser le moteur de lecture de vues a savoir ejs
 exercice.set("view engine", "ejs"); 
 
+exercice.use(express.static("controle"));
+
 
 exercice.get("/", (req, res )=> {
 
@@ -47,8 +49,11 @@ exercice.get("/contact", (req, res )=> {
 });
 
 exercice.get("/equipe", (req, res )=> {
-
-    res.render("equipe");
+    equipe = {
+        equipe1:["Moilim Gazo - Chef","Bob LaMala - Serveur",
+            "Grr Martin - Responsable de salle", "Bébé Gaté - Chef cuisto"]
+    }
+    res.render("equipe"),equipe
 
 });
 
