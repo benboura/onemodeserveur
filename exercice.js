@@ -50,7 +50,7 @@ exercice.get("/contact", (req, res )=> {
 
 exercice.get("/equipe", (req, res )=> {
     equipe = {
-        equipe1:["Moilim Gazo - Chef","Bob LaMala - Serveur",
+        equipe1:["Moilim Gazo - Chef" ,"Bob LaMala - Serveur",
             "Grr Martin - Responsable de salle", "Bébé Gaté - Chef cuisto"]
     }
     res.render("equipe"),equipe
