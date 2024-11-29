@@ -1,7 +1,21 @@
 const express = require ("express");
+const mysql = require("mysql");
+const myConnection = require("express-myconnection");
 const fs = require("fs");
 const url = require("url");
 const exercice = express();
+
+const optionConnection = {
+    host: "localhost",
+    user: "root",
+    password: "Benraphael@1",
+    port: 3306,
+    database: "restaubase"
+};
+
+// Middlewer de connection à la base données
+//'Pool' est la stratégie de connection à la base de données 
+exercice.use(myConnection, (optionConnection, "pool"));
 
 // l'endroit ou se situe les vues qui s'affiche sur le navigateur 
 exercice.set("views", "./views"); 
@@ -50,7 +64,7 @@ exercice.get("/contact", (req, res )=> {
 
 exercice.get("/equipe", (req, res )=> {
     equipe = {
-        equipe1:["Moilim Gazo - Chef" ,"Bob LaMala - Serveur",
+        equipe1:["Moilim Gazo - Chef","Bob LaMala - Serveur",
             "Grr Martin - Responsable de salle", "Bébé Gaté - Chef cuisto"]
     }
     res.render("equipe"),equipe
