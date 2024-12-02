@@ -1,11 +1,11 @@
 const express = require ("express");
-const mysql = require("mysql");
+const mysql2 = require("mysql2");
 const myConnection = require("express-myconnection");
 const fs = require("fs");
 const url = require("url");
 const exercice = express();
 
-const optionConnection = {
+const connection = {
     host: "localhost",
     user: "root",
     password: "Benraphael@1",
@@ -15,7 +15,7 @@ const optionConnection = {
 
 // Middlewer de connection à la base données
 //'Pool' est la stratégie de connection à la base de données 
-exercice.use(myConnection, (optionConnection, "pool"));
+exercice.use(myConnection, (mysql2, connection, "pool"));
 
 // l'endroit ou se situe les vues qui s'affiche sur le navigateur 
 exercice.set("views", "./views"); 
@@ -26,35 +26,46 @@ exercice.set("view engine", "ejs");
 exercice.use(express.static("controle"));
 
 
-exercice.get("/", (req, res )=> {
-
-    // Récupère l'heure actuelle
-    let date = new Date();
-    let salutation ="Bonjour";
+exercice.get("/accueil", (req, res )=> {
+    
+  // Récupère l'heure actuelle
+  let date = new Date();
+  let salutation ="Bonjour";
 
 if(date.getHours() > 14 ) {
-    salutation ="Bonsoir";
+  salutation ="Bonsoir";
 }
 
-    utilisateur = {
-        nom:["Gazo", "Mali", "LaMala"],
-        prenom: ["Moilim"],
-        maSalutation: salutation
-    };
-   res.render("accueil"), utilisateur
-    
+  utilisateur = {
+      nom:["Gazo", "Mali", "LaMala"],
+      prenom: ["Moilim"],
+      maSalutation: salutation
+  };
+ res.render("accueil"), utilisateur
+
 });
 
 // Definir une route GET pour l'URL "/menus" 
 exercice.get("/menus", (req, res )=> {
 
-    food = {
-        menus: ["Tripes", "Le special Waouh", "Songes au coco" ]
-    }
-
-// rendre la vue "menus" lorsque cette route est accédée avec le tableau food
-    res.render("menus"), food 
+    req.getConnection((erreur, connection)=> {
+        if (erreur) {
+            console.log(erreur);
+        }else {
+            connection.query("SELECT * FROM plats ;", [], (err, resultat) => {
+                if (err) {
+                    console.log(err);
+                }else {
+                    console.log("resultat :", resultat);
+                    res.render("menus", {resultat});
+                }
+            }) 
+        }
+      })
+   
 });
+
+
 
 exercice.get("/contact", (req, res )=> {
 

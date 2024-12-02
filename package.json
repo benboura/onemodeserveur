@@ -9,9 +9,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "2": "^3.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-myconnection": "^1.0.4",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.5"
   }
 }
