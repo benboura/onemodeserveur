@@ -1,9 +1,11 @@
 const express = require ("express");
-const mysql2 = require("mysql2");
-const myConnection = require("express-myconnection");
 const fs = require("fs");
 const url = require("url");
 const exercice = express();
+const mysql = require("mysql")
+const myconnection = require("express-myconnection");
+const { error } = require("console");
+
 
 const connection = {
     host: "localhost",
@@ -13,9 +15,11 @@ const connection = {
     database: "restaubase"
 };
 
+exercice.use(myconnection(mysql, connection, "pool"));
+
 // Middlewer de connection à la base données
 //'Pool' est la stratégie de connection à la base de données 
-exercice.use(myConnection, (mysql2, connection, "pool"));
+
 
 // l'endroit ou se situe les vues qui s'affiche sur le navigateur 
 exercice.set("views", "./views"); 
@@ -48,20 +52,20 @@ if(date.getHours() > 14 ) {
 // Definir une route GET pour l'URL "/menus" 
 exercice.get("/menus", (req, res )=> {
 
-    req.getConnection((erreur, connection)=> {
-        if (erreur) {
-            console.log(erreur);
-        }else {
-            connection.query("SELECT * FROM plats ;", [], (err, resultat) => {
-                if (err) {
-                    console.log(err);
-                }else {
-                    console.log("resultat :", resultat);
-                    res.render("menus", {resultat});
-                }
-            }) 
-        }
-      })
+   req.getConnection((error, connection)=>{
+    if(error) {
+        console.log(error);
+    }else {
+        connection.query("SELECT * FROM plats;", (err, resultat)=> {
+            if (err) {
+                console.log(err);
+            }else{
+                console.log("Resultat : " + resultat);
+                res.render("menu", {resultat});
+            }
+        });
+    }
+   })
    
 });
 
