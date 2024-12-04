@@ -36,5 +36,26 @@
     <!-- Pied de page -->
    
 </body>
+
+<script>
+    function remplirDonnes(id, nom, prix){
+        document.querySelector("#id").value = id;
+        document.querySelector("#nomplat").value = nom;
+        document.querySelector("#prix").value = prix;
+    }
+    function supprimerDonnes(id){
+        let routeComplete = "plat/"+ id;
+
+        fetch(routeComplete, {method: "DELETE"}
+
+        ).then(
+            (reponse) => response.json()
+        ).then(
+            (donnee) => window.location.href = donnee.routeRacine
+        )
+    }
+</script>
+
 <%- include('footer.ejs') %>
+
 </html>

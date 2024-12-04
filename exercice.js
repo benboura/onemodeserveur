@@ -2,7 +2,7 @@ const express = require ("express");
 const fs = require("fs");
 const url = require("url");
 const exercice = express();
-const mysql = require("mysql")
+const mysql2 = require("mysql2")
 const myconnection = require("express-myconnection");
 const { error } = require("console");
 
@@ -15,7 +15,7 @@ const connection = {
     database: "restaubase"
 };
 
-exercice.use(myconnection(mysql, connection, "pool"));
+exercice.use(myconnection(mysql2, connection, "pool"));
 
 // Middlewer de connection à la base données
 //'Pool' est la stratégie de connection à la base de données 
@@ -30,7 +30,7 @@ exercice.set("view engine", "ejs");
 exercice.use(express.static("controle"));
 
 
-exercice.get("/accueil", (req, res )=> {
+exercice.get("/", (req, res )=> {
     
   // Récupère l'heure actuelle
   let date = new Date();
@@ -45,7 +45,7 @@ if(date.getHours() > 14 ) {
       prenom: ["Moilim"],
       maSalutation: salutation
   };
- res.render("accueil"), utilisateur
+ res.render("/"), utilisateur
 
 });
 
@@ -60,13 +60,36 @@ exercice.get("/menus", (req, res )=> {
             if (err) {
                 console.log(err);
             }else{
-                console.log("Resultat : " + resultat);
-                res.render("menu", {resultat});
+                console.log("resultat : " + resultat);
+                res.render("menus", {resultat});
             }
         });
     }
    })
    
+ 
+});
+
+// créer une route avec la methode DELETE
+// localhost:3004/plat/1, le chiffre 1 correspond à l'id du plat à supprimer 
+exercice.delete("/plats/:id",(req, res)=>{
+let platId = req.params.id ;  // récupere 
+
+req.getConnection((erreur, connection)=> {
+    if (erreur) {
+        console.log(erreur);
+    }else {
+        connection.query("DELETE FROM plats WHERE id = ?", 
+            [platId], (err, result)=> {
+                if(err) {
+                    console.log(err);
+                }else {
+                    console.log("suppression reussie")
+                    res.status(200).json({routeRacine: "/"});
+                }
+            });
+    }
+});
 });
 
 
