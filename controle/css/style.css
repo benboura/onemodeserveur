@@ -4,6 +4,7 @@ body {
     background-color: #3e76e8; /* Couleur de fond de la page */
     margin: 0; /* Supprime les marges par défaut */
     padding: 0; /* Supprime le remplissage par défaut */
+    
 }
 ul{
     color: #333;
@@ -24,10 +25,11 @@ h1 {
     margin: 0; /* Supprime les marges autour du titre */
 }
 
+/* style pour l'image*/
 img {
     
-    width: 10%; /*definit la largeur */
-    height: 10%; /*definit la hauteur */
+    width: 20%; /*definit la largeur */
+    height: 20%; /*definit la hauteur */
     border-radius: 10px ; /* arrondir les coins*/
 }
 
@@ -52,34 +54,41 @@ footer {
 /* Styles pour les liens dans le menu de navigation */
 
 .nav-container {
-    display: flex;
+    display: flex; /* Utilise Flexbox pour un agencement flexible */
     justify-content: center; /* Centre la navigation horizontalement */
-    border: 2px solid #097305; /* Ajoute un cadre autour de la navigation */
+    border: 2px solid #16d716; /* Ajoute un cadre autour de la navigation */
     border-radius: 10px; /* Arrondit les coins du cadre */
-    padding: 10px; /* Ajoute un espacement intérieur */
-}
-
-nav {
-    background-color: #4921b4;
+    padding: 10px; /* Ajoute un espacement intérieur pour le confort visuel */
+    background-color: #444; /*Ajoute une couleur de fond à l'interieur de la bordure*/
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Utilise flexbox pour aligner horizontalement */
+    list-style-type: none; /* Supprime les puces de la liste */
+    padding: 0; /* Supprime le rembourrage par défaut */
+    margin: 0; /* Supprime la marge par défaut */
+    display: flex; /* Utilise flexbox pour aligner horizontalement les éléments de la liste */
 }
 
 nav li {
-    margin: 0 15px; /* Espacement entre les éléments */
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
+    margin: 0 25px; /* Définit l'espacement entre les éléments de la liste */
 }
 
 nav a:hover {
     background-color: #ba1515; /* Couleur de fond au survol */
+    
+}
+
+nav a{
+    color: #009439;
+}
+
+/* style du formulaire*/
+form {
+display: flex;
+flex-direction: column; /*Aligne les éléments du formulaire vérticalement */
+width: 300px; /*Largeur du formulaire*/
+}
+  
+input,textarea,select {
+    margin-bottom: 10px; /*ajoute un espacement entre les elements */
 }
